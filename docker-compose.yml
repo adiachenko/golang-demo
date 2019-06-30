@@ -1,0 +1,15 @@
+# Compose File Reference: https://docs.docker.com/compose/compose-file/
+version: '3.7'
+
+services:
+  # Docker Image: https://hub.docker.com/r/vinelab/nginx-php
+  app:
+    command: tail -f /dev/null
+    image: golang:1.12.6-stretch
+    environment:
+      - PATH=/opt/project/bin:$PATH
+    ports:
+      - ${DOCKER_HOST_APP_PORT:-8000}:8000
+    volumes:
+      - ./:/opt/project:cached
+    working_dir: /opt/project
