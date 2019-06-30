@@ -28,13 +28,13 @@ docker-compose exec app scripts/build.sh
 Run web server:
 
 ```sh
-docker-compose exec app bin/http
+docker-compose exec app http
 ```
 
 Run console:
 
 ```sh
-docker-compose exec app bin/console
+docker-compose exec app console
 ```
 
 Serve app in development mode (restart web server on file changes):
