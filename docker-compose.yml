@@ -6,9 +6,12 @@ services:
     command: tail -f /dev/null
     image: golang:1.12.6-stretch
     environment:
-      - PATH=/opt/project/bin:$PATH
+      - GOFLAGS=-mod=vendor
     ports:
       - ${DOCKER_HOST_APP_PORT:-8000}:8000
     volumes:
+      # This is go modules cache, without it you will have to
+      # re-download all dependencies after restarting container
+      - modules:/go/pkg/mod
       - ./:/opt/project:cached
     working_dir: /opt/project
